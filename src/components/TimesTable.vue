@@ -13,28 +13,7 @@
 
 <script>
 export default {
-  name: "NumberTriangle",
-
-  data() {
-    return {
-      msg: "Hello"
-    };
-  },
-  methods: {
-    enter() {
-      var result = "";
-      var print = "";
-      for (var i = 1; i < 10; i++) {
-        for (var j = 1; j < 10; j++) {
-          result = i * j;
-          console.log(i, j, result);
-          print = i + " * " + j + " = " + result;
-          console.log(print);
-        }
-      }
-      document.getElementById("ttResult").innerHTML = print;
-    }
-  }
+  name: "NumberTriangle"
 };
 </script>
 
