@@ -1,0 +1,39 @@
+@import "modules/variables";
+@import "modules/helper";
+.frame {
+    clear: both;
+    width: 100%;
+    margin: 80px 0;
+    border-top: 3px solid #eee;
+    border-bottom: 3px solid #eee;
+    padding: 30px 0 50px;
+}
+
+h2 {
+    margin-bottom: 50px;
+}
+
+button {
+    border: none;
+    background: #ff0011;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
+}
+
+ul {
+    margin-top: 50px;
+}
+
+li {
+    display: inline-block;
+    font-size: 2rem;
+    border-bottom: 3px solid #eee;
+    padding: 0 10px 10px;
+}
+
+li:not(:last-child) {
+    margin-right: 8%;
+}

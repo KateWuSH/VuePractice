@@ -1,0 +1,15 @@
+@import "modules/variables";
+@import "modules/helper";
+marquee {
+    margin-bottom: 30px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+li {
+    display: inline-block;
+}
+
+li:not(:last-child) {
+    margin-right: 50px;
+}

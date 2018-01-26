@@ -1,0 +1,28 @@
+@import "modules/variables";
+@import "modules/helper";
+.frame {
+    clear: both;
+    width: 100%;
+    margin: 80px 0;
+    border-top: 3px solid #eee;
+    border-bottom: 3px solid #eee;
+    padding: 30px 0 50px;
+}
+
+h2 {
+    margin-bottom: 50px;
+}
+
+.times {
+    display: flex;
+}
+
+.single {
+    width: calc(100% / 9);
+    text-align: left;
+}
+
+.single:not(:last-child) {
+    border-right: 1px solid #eee;
+    margin-right: 32px;
+}

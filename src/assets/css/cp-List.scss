@@ -1,0 +1,36 @@
+@import "modules/variables";
+@import "modules/helper";
+.list-frame {
+    width: 70%;
+}
+
+h1 {
+    margin: 30px 0;
+}
+
+.gender-filter {
+    text-align: left;
+    margin-bottom: 30px;
+    span {
+        cursor: pointer;
+    }
+    span:not(:first-child) {
+        margin-left: 10px;
+    }
+    .active {
+        font-weight: bold;
+    }
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    padding: .5rem;
+}
+
+td {
+    padding: .5rem;
+    vertical-align: middle;
+}

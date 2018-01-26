@@ -1,0 +1,28 @@
+@import "modules/variables";
+@import "modules/helper";
+.frame {
+    width: 50%;
+    float: left;
+    margin-bottom: 80px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.input {
+    span {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    margin-bottom: 80px;
+}
+
+#itResult {
+    min-height: 200px;
+}
