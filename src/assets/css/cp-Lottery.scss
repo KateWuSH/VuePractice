@@ -13,7 +13,7 @@ h2 {
     margin-bottom: 50px;
 }
 
-button {
+.start {
     border: none;
     background: #ff0011;
     height: 150px;
@@ -21,10 +21,12 @@ button {
     border-radius: 50%;
     color: white;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 ul {
     margin-top: 50px;
+    min-height: 45px;
 }
 
 li {

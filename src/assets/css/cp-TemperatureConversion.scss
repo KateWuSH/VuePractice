@@ -1,0 +1,53 @@
+@import "modules/variables";
+@import "modules/helper";
+.list-frame {
+    float: right;
+    width: 30%;
+}
+
+h2 {
+    margin: 30px 0 80px;
+}
+
+p {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.tc span {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+input {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.tc {
+    margin-bottom: 20px;
+}
+
+.tf {
+    margin-left: 82px;
+    text-align: left;
+}
+
+.tf span {
+    display: inline-block;
+    padding: 7px 0;
+    width: 129px;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: .8em;
+    margin-right: 3px;
+    p {
+        display: inline-block;
+        margin-right: 10px;
+    }
+}
+
+button {
+    height: 30px;
+    margin-bottom: 20px;
+}

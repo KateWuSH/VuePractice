@@ -1,15 +1,10 @@
 <template>
   <div class="frame">
     <h2>樂透開獎</h2>
-    <button type="button" @click="random()">START</button>
+    <button type="button" @click="getRandomArray(1, 42, 6)" class="start">START</button>
     <div>
       <ul id="lRresult">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li v-for="(list, index) in rdmArray" v-if="index < 6">{{ list }}</li>
       </ul>
     </div>
   </div>
@@ -21,22 +16,28 @@ export default {
 
   data() {
     return {
-      msg: "Hello"
+      msg: "Hello",
+      rdmArray: [],
+      arr: ["aaa", "bbb", "ccc"]
     };
   },
   methods: {
-    random() {
-      var num = "";
-      for (var i = 0; i < 6; i++) {
-        //var num = Math.floor(Math.random() * 42 + 1);
-        //console.log(num);
-        var li = document.getElementsByTagName("li")[i];
-        // console.log(i);
-        // console.log(li);
-        li.innerHTML = 5;
-        // var li = document.getElementById("lRresult").childNodes;
-        // console.log(li);
-        // li[i].innerHTML = num;
+    getRandomArray: function(minNum, maxNum, n) {
+      let rdmArray = [];
+      // 將陣列歸零 array reset to zero
+      let vm = this;
+      vm.rdmArray = [];
+      for (let i = 0; i < n; i++) {
+        let rdm = 0;
+        do {
+          var exist = false;
+          // 產生亂數 generate the random number
+          rdm = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+          // 判斷是否數字是否重複 judge whether the number is repeated
+          if (rdmArray.indexOf(rdm) != -1) exist = true;
+        } while (exist);
+        rdmArray[i] = rdm;
+        vm.rdmArray.push(rdm);
       }
     }
   }

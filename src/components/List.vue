@@ -1,11 +1,13 @@
 <template>
     <div class="list-frame">
     <h1>User's List</h1>
-    <div class="gender-filter">
-      篩選條件：
-      <span class="male" @click="filterMale();isMaleActive = !isMaleActive" :class="{ active: isMaleActive }">Male</span>
-      <span @click="filterFemale();isFemaleActive = !isFemaleActive" :class="{ active: isFemaleActive }">Female</span>
-      <span>All</span>
+    <div class="gender-filter" >
+      <span>篩選條件：</span>
+      <ul id="filter">
+        <li class="male" @click="filterMale(); statusMale()" :class="{ active: isMaleActive }">Male</li>
+        <li @click="filterFemale(); statusFemale()" :class="{ active: isFemaleActive }">Female</li>
+        <li @click="filterAll();classObject()" :class="classObject">All</li>
+      </ul>
     </div>
     <table>
       <thead>
@@ -38,7 +40,8 @@ export default {
       msg: "Welcome to Your Vue.js App",
       listData: [],
       isMaleActive: false,
-      isFemaleActive: false
+      isFemaleActive: false,
+      isAllActive: false
     };
   },
   methods: {
@@ -55,27 +58,63 @@ export default {
     },
     filterMale() {
       var genders = document.querySelectorAll(".gender");
-      var gender = "";
       for (var i = 0; i < genders.length; i++) {
+        genders[i].parentNode.classList.remove("display-none");
         switch (genders[i].textContent) {
           case "male":
             break;
           case "female":
-            genders[i].parentNode.style.display = "none";
+            genders[i].parentNode.classList.add("display-none");
         }
       }
     },
     filterFemale() {
       var genders = document.querySelectorAll(".gender");
-      var gender = "";
       for (var i = 0; i < genders.length; i++) {
+        genders[i].parentNode.classList.remove("display-none");
         switch (genders[i].textContent) {
           case "male":
-            genders[i].parentNode.style.display = "none";
+            genders[i].parentNode.classList.add("display-none");
             break;
           case "female":
         }
       }
+    },
+    filterAll() {
+      var genders = document.querySelectorAll(".gender");
+      for (var i = 0; i < genders.length; i++) {
+        genders[i].parentNode.classList.remove("display-none");
+      }
+    },
+    statusMale() {
+      const items = document.getElementById("filter").children;
+      let vm = this;
+      for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove("active");
+      }
+      vm.isMaleActive = true;
+    },
+    statusFemale() {
+      const items = document.getElementById("filter").children;
+      let vm = this;
+      const isFemaleActive = "";
+      for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove("active");
+      }
+      vm.isFemaleActive = true;
+    },
+    statusAll() {
+      const items = document.getElementById("filter").children;
+      let vm = this;
+      for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove("active");
+      }
+      vm.isAllActive = true;
+    },
+    classObject: function() {
+      return {
+        active: this.isAllActive
+      };
     }
   },
   mounted() {

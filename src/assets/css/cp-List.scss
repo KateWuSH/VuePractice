@@ -2,6 +2,7 @@
 @import "modules/helper";
 .list-frame {
     width: 70%;
+    float: left;
 }
 
 h1 {
@@ -11,10 +12,14 @@ h1 {
 .gender-filter {
     text-align: left;
     margin-bottom: 30px;
-    span {
-        cursor: pointer;
+    ul {
+        display: inline-block;
     }
-    span:not(:first-child) {
+    ul li {
+        cursor: pointer;
+        display: inline-block;
+    }
+    ul li:not(:first-child) {
         margin-left: 10px;
     }
     .active {
@@ -33,4 +38,8 @@ th {
 td {
     padding: .5rem;
     vertical-align: middle;
+}
+
+.display-none {
+    display: none;
 }
