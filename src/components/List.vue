@@ -6,7 +6,7 @@
       <ul id="filter">
         <li class="male" @click="filterMale(); statusMale()" :class="{ active: isMaleActive }">Male</li>
         <li @click="filterFemale(); statusFemale()" :class="{ active: isFemaleActive }">Female</li>
-        <li @click="filterAll();classObject()" :class="classObject">All</li>
+        <li @click="filterAll();statusAll()" :class="{ active: isAllActive }">All</li>
       </ul>
     </div>
     <table>
@@ -101,7 +101,7 @@ export default {
       for (let i = 0; i < items.length; i++) {
         items[i].classList.remove("active");
       }
-      vm.isFemaleActive = true;
+      vm.isFemaleActive = !vm.isFemaleActive;
     },
     statusAll() {
       const items = document.getElementById("filter").children;
@@ -109,12 +109,7 @@ export default {
       for (let i = 0; i < items.length; i++) {
         items[i].classList.remove("active");
       }
-      vm.isAllActive = true;
-    },
-    classObject: function() {
-      return {
-        active: this.isAllActive
-      };
+      vm.isAllActive = !vm.isAllActive;
     }
   },
   mounted() {

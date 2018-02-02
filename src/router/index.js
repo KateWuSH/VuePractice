@@ -30,6 +30,11 @@ export default new Router({
             path: '/practice',
             name: 'practice',
             component: Page.Practice
+        },
+        {
+            path: '/Props',
+            name: 'Props',
+            component: Page.Props
         }
     ]
 })

@@ -39,6 +39,10 @@ export default {
         {
           name: "Practice",
           url: "/Practice"
+        },
+        {
+          name: "Props",
+          url: "/Props"
         }
       ]
     };
