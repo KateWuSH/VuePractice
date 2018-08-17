@@ -1,35 +1,25 @@
-<template>
-    <div class="list-frame">
-    <h1>User's List</h1>
-    <div class="gender-filter" >
-      <span>篩選條件：</span>
-      <ul id="filter">
-        <li class="male" @click="filterMale(); statusMale()" :class="{ active: isMaleActive }">Male</li>
-        <li @click="filterFemale(); statusFemale()" :class="{ active: isFemaleActive }">Female</li>
-        <li @click="filterAll();statusAll()" :class="{ active: isAllActive }">All</li>
-      </ul>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Photo</th>
-          <th>Name</th>
-          <th>Gender</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, i) in listData">
-          <td>{{ i + 1 }}</td>
-          <td><img :src="item.picture.medium" width="50px"></td>
-          <td>{{ item.name.first }}{{ item.name.last }}</td>
-          <td class="gender">{{ item.gender }}</td>
-          <td>{{ item.email }}</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
+<template lang="pug">
+  .list-frame
+    h1 User's List
+    .gender-filter
+      span 篩選條件：
+      ul#filter
+        li(class="male" @click="filterMale()" :class="{ active: isMaleActive }") Male
+        li(@click="filterFemale(); statusFemale()" :class="{ active: isFemaleActive }") Female
+        li(@click="filterAll();statusAll()" :class="{ active: isAllActive }") All
+        //-li(v-for="filter in filters" @click='filtered(filter.title)') {{ filter.title }}
+    table
+      thead
+        tr
+          th(v-for="th in ths") {{ th.title }}
+      tbody
+        tr(v-for="(item, i) in listData")
+          td {{ i + 1 }}
+          td
+            img(:src="item.picture.medium" width="50px")
+          td {{ item.name.first }}{{ item.name.last }}
+          td(class="gender") {{ item.gender }}
+          td {{ item.email }}
 </template>
 
 <script>
@@ -37,11 +27,40 @@ export default {
   name: "List",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
       listData: [],
+      maleData: [],
+      femaleData: [],
       isMaleActive: false,
       isFemaleActive: false,
-      isAllActive: false
+      isAllActive: false,
+      filters: [
+        {
+          title: "Male"
+        },
+        {
+          title: "Female"
+        },
+        {
+          title: "All"
+        }
+      ],
+      ths: [
+        {
+          title: "#"
+        },
+        {
+          title: "Photo"
+        },
+        {
+          title: "Name"
+        },
+        {
+          title: "Gender"
+        },
+        {
+          title: "Email"
+        }
+      ]
     };
   },
   methods: {
@@ -57,43 +76,27 @@ export default {
         });
     },
     filterMale() {
-      var genders = document.querySelectorAll(".gender");
-      for (var i = 0; i < genders.length; i++) {
-        genders[i].parentNode.classList.remove("display-none");
-        switch (genders[i].textContent) {
-          case "male":
-            break;
-          case "female":
-            genders[i].parentNode.classList.add("display-none");
-        }
-      }
+      let male = this.listData.filter(data => data.gender === "male");
+      this.maleData = male;
+      console.log(this.maleData.length);
+
+      const items = document.getElementById("filter").children;
+      console.log(items);
+
+      // for (let i = 0; i < items.length; i++) {
+      //   items[i].classList.remove("active");
+      //   console.log("remove");
+      // }
     },
     filterFemale() {
-      var genders = document.querySelectorAll(".gender");
-      for (var i = 0; i < genders.length; i++) {
-        genders[i].parentNode.classList.remove("display-none");
-        switch (genders[i].textContent) {
-          case "male":
-            genders[i].parentNode.classList.add("display-none");
-            break;
-          case "female":
-        }
-      }
+      let female = this.listData.filter(data => data.gender === "female");
+      this.femaleData = female;
+      console.log(this.femaleData.length);
     },
     filterAll() {
-      var genders = document.querySelectorAll(".gender");
-      for (var i = 0; i < genders.length; i++) {
-        genders[i].parentNode.classList.remove("display-none");
-      }
+      console.log(this.listData.length);
     },
-    statusMale() {
-      const items = document.getElementById("filter").children;
-      let vm = this;
-      for (let i = 0; i < items.length; i++) {
-        items[i].classList.remove("active");
-      }
-      vm.isMaleActive = true;
-    },
+    statusMale() {},
     statusFemale() {
       const items = document.getElementById("filter").children;
       let vm = this;
@@ -110,6 +113,11 @@ export default {
         items[i].classList.remove("active");
       }
       vm.isAllActive = !vm.isAllActive;
+    },
+    filtered(type) {
+      let male = this.listData.filter(data => data.gender === "male");
+      this.maleData = male;
+      console.log(this.maleData);
     }
   },
   mounted() {

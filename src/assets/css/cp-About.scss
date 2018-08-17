@@ -1,7 +1,8 @@
 @import "modules/variables";
 @import "modules/helper";
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
   line-height: normal;
 }
@@ -22,4 +23,18 @@ li {
 
 a {
   color: $color-a-1;
+}
+
+h2 {
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.button {
+  margin-bottom: 50px;
+}
+
+.active {
+  color: red;
 }

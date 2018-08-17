@@ -29,15 +29,15 @@ export default {
           url: "/"
         },
         {
-          name: "About",
+          name: "UI",
           url: "/about"
         },
         {
-          name: "Test",
+          name: "API",
           url: "/test"
         },
         {
-          name: "Practice",
+          name: "JS-Basic",
           url: "/Practice"
         },
         {
