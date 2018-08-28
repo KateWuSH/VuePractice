@@ -55,5 +55,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/css/cp-Dynamic.scss";
+h2 {
+  margin: 100px 0 30px;
+}
+
+.content {
+  display: flex;
+  width: 1200px;
+  margin: auto;
+}
+
+.left {
+  width: 20%;
+  background: #ccc;
+  padding: 5%;
+}
+
+.left button {
+  display: block;
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  margin: 0 auto 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.right {
+  width: 70%;
+  background: #eee;
+  padding: 5%;
+}
 </style>

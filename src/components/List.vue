@@ -1,25 +1,25 @@
 <template lang="pug">
+  //- 資料來源：https://www.youtube.com/watch?v=mEjVUt_rsKs 
   .list-frame
     h1 User's List
     .gender-filter
       span 篩選條件：
       ul#filter
-        li(class="male" @click="filterMale()" :class="{ active: isMaleActive }") Male
-        li(@click="filterFemale(); statusFemale()" :class="{ active: isFemaleActive }") Female
-        li(@click="filterAll();statusAll()" :class="{ active: isAllActive }") All
-        //-li(v-for="filter in filters" @click='filtered(filter.title)') {{ filter.title }}
+        li(v-for="(filter, index) in filters" :class="{active:active===index}" @click="toggle(index, filter.title)") {{ filter.title }}
     table
       thead
         tr
           th(v-for="th in ths") {{ th.title }}
       tbody
-        tr(v-for="(item, i) in listData")
+        tr(v-for="(item, i) in listDataRender")
           td {{ i + 1 }}
           td
             img(:src="item.picture.medium" width="50px")
           td {{ item.name.first }}{{ item.name.last }}
           td(class="gender") {{ item.gender }}
           td {{ item.email }}
+    //- 如需檢測 API 返回的資料，可以使用 pre 來看
+    //- pre {{ listData }}
 </template>
 
 <script>
@@ -28,20 +28,17 @@ export default {
   data() {
     return {
       listData: [],
-      maleData: [],
-      femaleData: [],
-      isMaleActive: false,
-      isFemaleActive: false,
-      isAllActive: false,
+      listDataRender: [],
+      active: 0,
       filters: [
+        {
+          title: "All"
+        },
         {
           title: "Male"
         },
         {
           title: "Female"
-        },
-        {
-          title: "All"
         }
       ],
       ths: [
@@ -66,58 +63,38 @@ export default {
   methods: {
     getData() {
       let vm = this;
+      //- 因為有在 main.js 宣告使用，所以可以用 this
       vm.axios
         .get("https://randomuser.me/api/?results=8")
-        .then(function(response) {
+        .then(response => {
           vm.listData = response.data.results;
+          //- listData 為取得原始資料，為避免資料被汙染，建議進行深拷貝另一份資料，在新拷貝的資料中再進行處理
+          vm.listDataRender = JSON.parse(JSON.stringify(vm.listData));
         })
-        .catch(function(error) {
-          console.log(error);
-        });
+        .catch(error => console.log(error));
+    },
+    toggle(index, type) {
+      this.active = index;
+      if (type === "Male") {
+        this.filterMale();
+      } else if (type === "Female") {
+        this.filterFemale();
+      } else {
+        this.filterAll();
+      }
     },
     filterMale() {
-      let male = this.listData.filter(data => data.gender === "male");
-      this.maleData = male;
-      console.log(this.maleData.length);
-
-      const items = document.getElementById("filter").children;
-      console.log(items);
-
-      // for (let i = 0; i < items.length; i++) {
-      //   items[i].classList.remove("active");
-      //   console.log("remove");
-      // }
+      this.listDataRender = this.listData.filter(
+        data => data.gender === "male"
+      );
     },
     filterFemale() {
-      let female = this.listData.filter(data => data.gender === "female");
-      this.femaleData = female;
-      console.log(this.femaleData.length);
+      this.listDataRender = this.listData.filter(
+        data => data.gender === "female"
+      );
     },
     filterAll() {
-      console.log(this.listData.length);
-    },
-    statusMale() {},
-    statusFemale() {
-      const items = document.getElementById("filter").children;
-      let vm = this;
-      const isFemaleActive = "";
-      for (let i = 0; i < items.length; i++) {
-        items[i].classList.remove("active");
-      }
-      vm.isFemaleActive = !vm.isFemaleActive;
-    },
-    statusAll() {
-      const items = document.getElementById("filter").children;
-      let vm = this;
-      for (let i = 0; i < items.length; i++) {
-        items[i].classList.remove("active");
-      }
-      vm.isAllActive = !vm.isAllActive;
-    },
-    filtered(type) {
-      let male = this.listData.filter(data => data.gender === "male");
-      this.maleData = male;
-      console.log(this.maleData);
+      this.listDataRender = JSON.parse(JSON.stringify(this.listData));
     }
   },
   mounted() {

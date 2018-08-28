@@ -25,6 +25,7 @@ export default {
   data() {
     return {
       //  將要傳入子組件的資料放這邊
+      message: "Hello",
       items: [
         {
           title: "Heading1",
@@ -44,8 +45,7 @@ export default {
             "3. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
           btntext: "View details »"
         }
-      ],
-      message: "Hello"
+      ]
     };
   },
   // 自動更新父組件
@@ -62,5 +62,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/css/cp-Props.scss";
+.pass-frame {
+  margin: 30px auto;
+  width: 450px;
+  text-align: left;
+}
+
+h2 {
+  margin-bottom: 40px;
+}
 </style>

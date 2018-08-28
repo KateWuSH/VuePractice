@@ -5,7 +5,7 @@
         Child:
         <span>{{ parentMessage }}</span>
         <input v-model="message">
-        <button @click="updateText">Update</button>
+        <button @click="updateText">Update Parent Data</button>
       </div>
     </div>
     <div class="frame" >
@@ -47,5 +47,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/css/cp-Container.scss";
+// @import "../assets/css/cp-Container.scss";
+.frame {
+  width: 1200px;
+  margin: 20px auto;
+  border: 3px solid #eee;
+  padding: 3%;
+  h2 {
+    margin-bottom: 30px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  .inner {
+    width: calc(100% / 3);
+  }
+  h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+  p {
+    line-height: 2rem;
+    text-align: justify;
+    padding: 0 5%;
+  }
+}
+
+.child {
+  margin: 30px auto 100px;
+  width: 450px;
+  text-align: left;
+  h2 {
+    margin-bottom: 40px;
+  }
+}
 </style>

@@ -9,17 +9,19 @@
     .tab-frame
       h2 {{ title }}
       ul
-        li(@click="toggle(index ,tab.view)" v-for="(tab,index) in tabs" :class="{active:active===index}") {{tab.type}}
-      component(:is="currentView")
+        //- 為了確保 v-for 會重新渲染，建議加上 :key
+        li(v-for="(tab, index) in tabs" :key="tab.view" :class="{ active:active===index }" @click="toggle(index, tab.view)") {{ tab.type }}
+      keep-alive
+        component(:is="currentView")
 </template>
 
 <script>
 // 局部註冊(Local Registration)：不需共用的 component，可採用；須共用則採用全域註冊
 var child1 = {
-  template: "<p>this is child1</p>"
+  template: "<p>Child 1 - this is child 1</p>"
 };
 var child2 = {
-  template: "<p>this is child2</p>"
+  template: "<p>Child 2 - this is child 2</p>"
 };
 
 export default {
@@ -29,15 +31,16 @@ export default {
       msg: "UI Button",
       loadStatus: false,
       title: "Tab Practice",
+      //- 預設 tab class active 的位置
       active: 0,
       currentView: "child1",
       tabs: [
         {
-          type: "tab1",
+          type: "Tab1",
           view: "child1"
         },
         {
-          type: "tab2",
+          type: "Tab2",
           view: "child2"
         }
       ]

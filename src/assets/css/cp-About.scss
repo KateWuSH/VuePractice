@@ -35,6 +35,24 @@ h2 {
   margin-bottom: 50px;
 }
 
+.tab-frame ul {
+  width: 30%;
+  margin: auto;
+  border-bottom: 1px solid gray;
+}
+
+li {
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
 .active {
   color: red;
 }
