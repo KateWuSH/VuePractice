@@ -35,6 +35,11 @@ export default new Router({
             path: '/Props',
             name: 'Props',
             component: Page.Props
+        },
+        {
+            path: '/Json',
+            name: 'JsonServer',
+            component: Page.Json
         }
     ]
 })

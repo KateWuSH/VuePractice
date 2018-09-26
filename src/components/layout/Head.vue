@@ -43,6 +43,10 @@ export default {
         {
           name: "Props",
           url: "/Props"
+        },
+        {
+          name: "Json-Server",
+          url: "/Json"
         }
       ]
     };

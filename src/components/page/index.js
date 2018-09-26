@@ -4,6 +4,7 @@ import EmptyPage from './EmptyPage'
 import Test from './Test'
 import Practice from './Practice'
 import Props from './Props'
+import Json from './Json'
 
 export default {
     Home,
@@ -11,5 +12,6 @@ export default {
     EmptyPage,
     Test,
     Practice,
-    Props
+    Props,
+    Json
 }

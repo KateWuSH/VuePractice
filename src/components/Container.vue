@@ -1,25 +1,18 @@
-<template>
-  <div>
-    <div class="child">
-      <div>
-        Child:
-        <span>{{ parentMessage }}</span>
-        <input v-model="message">
-        <button @click="updateText">Update Parent Data</button>
-      </div>
-    </div>
-    <div class="frame" >
-      <h2>父組件將資料用 Props 傳入子組件</h2>
-      <div class="wrapper">
-        <div class="inner" v-for="item in items">
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.info }}</p>
-          <p><a class="btn btn-default" href="#" role="button">{{ item.btntext }}</a></p>
-        </div>
-      </div>
-    </div>
-    
-  </div>
+<template lang='pug'>
+  div
+    .child
+      div Child:
+        span {{ parentMessage }}
+        input(v-model="message")
+        button(@click="updateText") 更新父組件資料
+    .frame
+      h2 父組件將資料用 Props 傳入子組件
+      .wrapper
+        .inner(v-for="item in items")
+          h3 {{ item.title }}
+          p {{ item.info }}
+          p
+            a(class="btn btn-default" href="#" role="button") {{ item.btntext }}
 </template>
 
 <script>
@@ -33,6 +26,7 @@ export default {
   // 將父組件的資料傳過來
   data() {
     return {
+      //- 預設和父組件相同的內容
       message: this.parentMessage
     };
   },
@@ -75,11 +69,18 @@ export default {
 }
 
 .child {
-  margin: 30px auto 100px;
+  margin: 30px auto 80px;
   width: 450px;
-  text-align: left;
+  text-align: center;
   h2 {
     margin-bottom: 40px;
+  }
+  span, input {
+    margin-left: 10px
+  }
+  button {
+    display: block;
+    margin: 30px auto 0
   }
 }
 </style>

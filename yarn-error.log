@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add pug pug-loader
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add webpack --dev
 
 PATH: 
-  C:\Users\User\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\User\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Brackets\command;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Microsoft VS Code\bin;C:\Users\User\AppData\Roaming\npm;C:\Users\User\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\TortoiseGit\bin;;C:\Program Files\Microsoft VS Code\bin;C:\Users\User\AppData\Roaming\npm;C:\Users\User\AppData\Local\Yarn\bin;C:\Users\User\AppData\Local\Programs\Microsoft VS Code\bin
 
 Yarn version: 
   1.7.0
@@ -31,16 +31,18 @@ npm manifest:
     "dependencies": {
       "axios": "^0.17.1",
       "element-ui": "^2.0.3",
+      "pug": "^2.0.3",
       "vue": "^2.5.2",
       "vue-axios": "^2.0.2",
-      "vue-router": "^3.0.1"
+      "vue-router": "^3.0.1",
+      "vuex": "^3.0.1"
     },
     "devDependencies": {
       "autoprefixer": "^7.1.2",
-      "babel-core": "^6.22.1",
+      "babel-core": "^6.26.3",
       "babel-loader": "^7.1.1",
       "babel-plugin-transform-runtime": "^6.22.0",
-      "babel-preset-env": "^1.3.2",
+      "babel-preset-env": "^1.7.0",
       "babel-preset-stage-2": "^6.22.0",
       "babel-register": "^6.22.0",
       "chalk": "^2.0.1",
@@ -53,8 +55,8 @@ npm manifest:
       "file-loader": "^1.1.4",
       "friendly-errors-webpack-plugin": "^1.6.1",
       "html-webpack-plugin": "^2.30.1",
-      "http-proxy-middleware": "^0.17.3",
-      "node-sass": "^4.6.0",
+      "http-proxy-middleware": "^0.18.0",
+      "node-sass": "^4.9.3",
       "opn": "^5.1.0",
       "optimize-css-assets-webpack-plugin": "^3.2.0",
       "ora": "^1.2.0",
@@ -64,12 +66,12 @@ npm manifest:
       "semver": "^5.3.0",
       "shelljs": "^0.7.6",
       "style-loader": "^0.19.0",
-      "url-loader": "^0.5.8",
+      "url-loader": "^1.1.1",
       "vue-loader": "^13.3.0",
       "vue-style-loader": "^3.0.1",
       "vue-template-compiler": "^2.5.2",
       "webpack": "^3.6.0",
-      "webpack-bundle-analyzer": "^2.9.0",
+      "webpack-bundle-analyzer": "^2.13.1",
       "webpack-dev-middleware": "^1.12.0",
       "webpack-hot-middleware": "^2.18.2",
       "webpack-merge": "^4.1.0"
