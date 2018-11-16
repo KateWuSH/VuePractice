@@ -1,12 +1,10 @@
 <template lang="pug">
   .json 
-    input(type='text')
-    a(href='javascript:void()') Create
+    input(type='text' v-model='input')
+    a(href='javascript:void()' @click.prevent='createHandler') Create
+    h6 為避免 live server 自動更新，要在設定裡的 liveServer.settings.ignoreFiles，加上 data.json
     ol
-      li alex
-        a(href='javascript:void()') Update
-        a(href='javascript:void()') Delete
-      li alex
+      li(v-for='content in contents') {{ content.content }}
         a(href='javascript:void()') Update
         a(href='javascript:void()') Delete
 </template>
@@ -16,8 +14,26 @@ export default {
   name: 'JsonServer',
   data() {
     return {
-      test: '123'
+      input: '',
+      contents: []
     }
+  },
+  methods: {
+    createHandler() {
+      console.log('Click', this.input);
+      this.axios.post('http://localhost:3000/contents', {
+        content: this.input
+      }).then((res) => {
+        console.log(res);
+        
+      })
+    }
+  },
+  mounted() {
+    this.axios.get('http://localhost:3000/contents').then((res) => {
+      this.contents = res.data;
+      
+    })
   }
 }
 </script>
@@ -29,6 +45,8 @@ export default {
   input
     margin-bottom: 30px
     height: 25px
+  h6
+    margin-bottom: 30px
   li
     list-style-type: decimal
     list-style-position: inside
